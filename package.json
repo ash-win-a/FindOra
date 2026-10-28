@@ -1,0 +1,29 @@
+{
+  "name": "findora",
+  "version": "1.0.0",
+  "description": "Findora - Smart Lost and Found Management System with Intelligent Item Matching and Verified Claims",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node scripts/seed.js",
+    "create-admin": "node scripts/createAdmin.js",
+    "test": "node scripts/testSuite.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1"
+  },
+  "keywords": [
+    "lost-and-found",
+    "smart-matching",
+    "verified-claims",
+    "college-project"
+  ],
+  "author": "Findora Team",
+  "license": "ISC"
+}

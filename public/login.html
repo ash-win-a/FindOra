@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – FINDORA</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="/images/logo.svg" alt="Findora Logo">
+      </a>
+      <div class="ms-auto">
+        <a href="/" class="btn btn-outline-navy btn-sm"><i class="fa-solid fa-arrow-left me-1"></i> Back to Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Card Section -->
+  <main class="container my-5 flex-grow-1 d-flex align-items-center justify-content-center">
+    <div class="col-12 col-md-8 col-lg-5">
+      <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+        
+        <div class="text-center mb-4">
+          <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center mb-2" style="width: 56px; height: 56px;">
+            <i class="fa-solid fa-right-to-bracket text-teal fs-3"></i>
+          </div>
+          <h3 class="fw-bold text-navy">Welcome to Findora</h3>
+          <p class="text-muted small">Sign in to manage your reports and submit claims</p>
+        </div>
+
+        <div id="auth-alert"></div>
+
+        <form id="login-form" novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address <span class="input-required">*</span></label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-muted"><i class="fa-regular fa-envelope"></i></span>
+              <input type="email" class="form-control" id="email" placeholder="name@college.edu" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+              <label for="password" class="form-label mb-0">Password <span class="input-required">*</span></label>
+            </div>
+            <div class="input-group mt-1">
+              <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" class="form-control" id="password" placeholder="••••••••" required autocomplete="current-password">
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn btn-teal w-100 py-2 fw-semibold">
+            Sign In
+          </button>
+        </form>
+
+        <!-- Demo Accounts Section (Viva & Presentation Friendly) -->
+        <div class="mt-4 pt-3 border-top">
+          <div class="text-center small text-muted mb-2 fw-bold">
+            <i class="fa-solid fa-chalkboard-user me-1 text-teal"></i> Demo Quick-Fill Accounts (For Evaluation):
+          </div>
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fillDemo('rahul@college.edu', 'Rahul@123')">
+              <i class="fa-solid fa-user-graduate me-1 text-primary"></i> Student (Rahul)
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fillDemo('campus.security@college.edu', 'Campus@123')">
+              <i class="fa-solid fa-shield me-1 text-success"></i> Security Staff
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fillDemo('admin@findora.com', 'Admin@123')">
+              <i class="fa-solid fa-shield-halved me-1 text-danger"></i> System Admin
+            </button>
+          </div>
+        </div>
+
+        <div class="text-center mt-4 small text-muted">
+          Don't have an account yet? <a href="/register.html" class="text-teal fw-bold">Register here</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-3 bg-white border-top text-center small text-muted">
+    <div class="container">&copy; 2026 FINDORA. Smart Lost and Found System.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

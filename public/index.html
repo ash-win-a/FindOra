@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FINDORA – Smart Lost and Found Management System</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="/images/logo.svg" alt="Findora Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+          <li class="nav-item">
+            <a class="nav-link active" href="/"><i class="fa-solid fa-house me-1"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/browse.html"><i class="fa-solid fa-compass me-1"></i> Browse Listings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/report-lost.html"><i class="fa-solid fa-circle-question me-1 text-danger"></i> Report Lost</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/report-found.html"><i class="fa-solid fa-hand-holding-heart me-1 text-teal"></i> Report Found</a>
+          </li>
+        </ul>
+
+        <!-- Dynamic Auth Links -->
+        <ul class="navbar-nav align-items-lg-center" id="navbar-auth-links">
+          <li class="nav-item me-2">
+            <a class="btn btn-outline-navy btn-sm px-3" href="/login.html">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-teal btn-sm px-3" href="/register.html">Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <span class="badge bg-white text-navy fw-bold px-3 py-2 mb-3 rounded-pill">
+            <i class="fa-solid fa-shield-halved text-teal me-1"></i> College Lost &amp; Found Portal
+          </span>
+          <h1 class="hero-title mb-3">
+            Lost something?<br><span class="text-teal">Let's find it.</span>
+          </h1>
+          <p class="hero-tagline mb-4">
+            Findora connects people with lost belongings through intelligent item matching and verified claims. Safe, fast, and transparent.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="/report-lost.html" class="btn btn-teal btn-lg px-4 shadow-sm">
+              <i class="fa-solid fa-plus-circle me-2"></i> Report Lost Item
+            </a>
+            <a href="/report-found.html" class="btn btn-outline-light btn-lg px-4">
+              <i class="fa-solid fa-hand-holding-heart me-2"></i> Report Found Item
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5 mt-4 mt-lg-0">
+          <div class="bg-white text-dark p-4 rounded-4 shadow-lg border">
+            <h5 class="fw-bold mb-3 text-navy">
+              <i class="fa-solid fa-magnifying-glass text-teal me-2"></i> Quick Search Items
+            </h5>
+            <form action="/browse.html" method="GET">
+              <div class="mb-3">
+                <label class="form-label small text-muted">What did you lose or find?</label>
+                <input type="text" name="search" class="form-control" placeholder="e.g. Dell Laptop, ID Card, Watch..." required>
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label small text-muted">Type</label>
+                  <select name="type" class="form-select">
+                    <option value="">All Types</option>
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label class="form-label small text-muted">Category</label>
+                  <select name="category" class="form-select">
+                    <option value="All">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Bags">Bags</option>
+                    <option value="Wallets and Cards">Wallets &amp; Cards</option>
+                    <option value="Documents">Documents</option>
+                    <option value="Keys">Keys</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Books">Books</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-navy w-100 py-2">
+                <i class="fa-solid fa-search me-1"></i> Search Listings
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Database Statistics Section -->
+  <section class="py-5 bg-white border-bottom">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h6 class="text-uppercase text-teal fw-bold letter-spacing-1">Real-Time Activity</h6>
+        <h3 class="fw-bold text-navy">Findora Campus Impact</h3>
+      </div>
+      <div class="row g-4" id="stats-counter-row">
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="stat-number" id="home-stat-lost">--</div>
+            <div class="stat-label">Lost Reports</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="stat-number text-teal" id="home-stat-found">--</div>
+            <div class="stat-label">Found Belongings</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="stat-number text-success" id="home-stat-returned">--</div>
+            <div class="stat-label">Reunited Items</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="stat-number text-primary" id="home-stat-claims">--</div>
+            <div class="stat-label">Verified Claims</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge bg-light text-teal fw-bold px-3 py-2 border mb-2">Simple &amp; Secure</span>
+        <h2 class="fw-bold text-navy">How Findora Works</h2>
+        <p class="text-muted mx-auto" style="max-width: 650px;">
+          Traditional campus lost-and-found boxes lead to privacy breaches and theft. Findora uses algorithmic matching and confidential ownership verification to safely return items.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
+            <div class="rounded-circle bg-light text-navy d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 64px; height: 64px; font-size: 1.5rem;">
+              <i class="fa-solid fa-bullhorn text-teal"></i>
+            </div>
+            <h5 class="fw-bold mb-2">1. Report an Item</h5>
+            <p class="text-muted small mb-0">Submit details such as category, location, date, and safe photos of lost or found belongings.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
+            <div class="rounded-circle bg-light text-navy d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 64px; height: 64px; font-size: 1.5rem;">
+              <i class="fa-solid fa-wand-magic-sparkles text-teal"></i>
+            </div>
+            <h5 class="fw-bold mb-2">2. Intelligent Matching</h5>
+            <p class="text-muted small mb-0">Our explainable algorithm calculates category, title, color, location, and date similarity up to 100%.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
+            <div class="rounded-circle bg-light text-navy d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 64px; height: 64px; font-size: 1.5rem;">
+              <i class="fa-solid fa-shield-check text-teal"></i>
+            </div>
+            <h5 class="fw-bold mb-2">3. Verified Claim</h5>
+            <p class="text-muted small mb-0">Submit confidential proof or answer verification questions that only the rightful owner knows.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
+            <div class="rounded-circle bg-light text-navy d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 64px; height: 64px; font-size: 1.5rem;">
+              <i class="fa-solid fa-handshake-angle text-teal"></i>
+            </div>
+            <h5 class="fw-bold mb-2">4. Safe Handover</h5>
+            <p class="text-muted small mb-0">Once the finder confirms your proof, arrange a verified handover on campus and mark the item Returned.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recently Reported Found Items -->
+  <section class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+        <div>
+          <span class="badge bg-light text-teal fw-bold px-3 py-1 border mb-1">Found Belongings</span>
+          <h2 class="fw-bold text-navy mb-0">Recently Reported Found Items</h2>
+        </div>
+        <a href="/browse.html?type=found" class="btn btn-outline-navy btn-sm px-3">
+          View All Listings <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+      <div class="row g-4" id="recent-items-container">
+        <div class="col-12 text-center py-4">
+          <div class="spinner-border text-teal" role="status"></div>
+          <p class="text-muted small mt-2">Loading recent items...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus Safety Tips -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <div class="p-4 bg-navy rounded-4 text-white">
+            <i class="fa-solid fa-shield-halved text-teal fs-1 mb-3"></i>
+            <h3 class="fw-bold mb-3">Safe Returning Guidelines</h3>
+            <p class="text-slate small mb-4">
+              Findora protects your personal contact details. Always prioritize personal safety and follow university policies when returning lost property.
+            </p>
+            <a href="/browse.html" class="btn btn-teal">Start Browsing</a>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="p-3 bg-white rounded-3 shadow-sm border h-100">
+                <h6 class="fw-bold text-navy"><i class="fa-solid fa-landmark text-teal me-2"></i> Meet in Public Places</h6>
+                <p class="text-muted small mb-0">Always arrange item handovers at well-lit campus areas like the Library desk or Security Office.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-white rounded-3 shadow-sm border h-100">
+                <h6 class="fw-bold text-navy"><i class="fa-solid fa-user-shield text-teal me-2"></i> Verify Before Handing</h6>
+                <p class="text-muted small mb-0">Never hand over high-value electronics without matching serial numbers or passcode verification.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-white rounded-3 shadow-sm border h-100">
+                <h6 class="fw-bold text-navy"><i class="fa-solid fa-lock text-teal me-2"></i> Guard Private Details</h6>
+                <p class="text-muted small mb-0">Do not publish PINs, wallet cash amounts, or government IDs openly in public description fields.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-white rounded-3 shadow-sm border h-100">
+                <h6 class="fw-bold text-navy"><i class="fa-solid fa-circle-check text-teal me-2"></i> Update Item Status</h6>
+                <p class="text-muted small mb-0">Mark items as Returned after successful handover to keep our campus database accurate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="/images/logo.svg" alt="Findora Logo" style="height: 38px; filter: brightness(0) invert(1);">
+          </div>
+          <p class="small text-secondary mb-3">
+            Findora is a college web technology capstone project providing smart lost-and-found management with explainable matching and verified ownership claims.
+          </p>
+          <div class="text-secondary small">
+            Built with HTML5, CSS3, Bootstrap 5, Express.js, and MongoDB.
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2 offset-lg-2">
+          <h6 class="text-white fw-bold mb-3">Navigation</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="/">Home</a></li>
+            <li class="mb-2"><a href="/browse.html">Browse Listings</a></li>
+            <li class="mb-2"><a href="/report-lost.html">Report Lost</a></li>
+            <li class="mb-2"><a href="/report-found.html">Report Found</a></li>
+            <li class="mb-2"><a href="/dashboard.html">User Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="text-white fw-bold mb-3">Categories</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="/browse.html?category=Electronics">Electronics</a></li>
+            <li class="mb-2"><a href="/browse.html?category=Bags">Bags</a></li>
+            <li class="mb-2"><a href="/browse.html?category=Wallets+and+Cards">Wallets &amp; Cards</a></li>
+            <li class="mb-2"><a href="/browse.html?category=Documents">Documents</a></li>
+            <li class="mb-2"><a href="/browse.html?category=Accessories">Accessories</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2">
+          <h6 class="text-white fw-bold mb-3">Project Info</h6>
+          <div class="small text-secondary mb-2">B.Tech Computer Science</div>
+          <div class="small text-secondary mb-2">Web Technology Lab</div>
+          <div class="badge bg-teal text-white">Full-Stack Demo</div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary pt-3 d-flex justify-content-between align-items-center flex-wrap small text-secondary">
+        <div>&copy; 2026 FINDORA. All rights reserved. Academic Project.</div>
+        <div>
+          <a href="#" class="me-3">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    // Load homepage live statistics & recent found items
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        // Fetch stats
+        const statsRes = await fetch('/api/items/stats');
+        const statsData = await statsRes.json();
+        if (statsData.success) {
+          document.getElementById('home-stat-lost').innerText = statsData.stats.totalLost;
+          document.getElementById('home-stat-found').innerText = statsData.stats.totalFound;
+          document.getElementById('home-stat-returned').innerText = statsData.stats.totalReturned;
+          document.getElementById('home-stat-claims').innerText = statsData.stats.approvedClaims;
+        }
+
+        // Fetch recent items
+        const recentRes = await fetch('/api/items/recent');
+        const recentData = await recentRes.json();
+        const container = document.getElementById('recent-items-container');
+
+        if (recentData.success && recentData.items.length > 0) {
+          let html = '';
+          recentData.items.forEach(item => {
+            const isLost = item.itemType === 'lost';
+            const typeBadge = isLost 
+              ? '<span class="item-badge-type badge-lost">Lost</span>'
+              : '<span class="item-badge-type badge-found">Found</span>';
+
+            const imageUrl = getItemImageUrl(item.imagePath);
+            const categoryIcon = getCategoryIcon(item.category);
+
+            const imageHtml = imageUrl 
+              ? `<img src="${escapeHtml(imageUrl)}" class="item-card-img" alt="${escapeHtml(item.title)}" onerror="handleImageError(this, '${escapeHtml(item.category)}')">`
+              : `<div class="item-card-placeholder"><i class="fa-solid ${categoryIcon}"></i></div>`;
+
+            html += `
+              <div class="col-lg-4 col-md-6">
+                <div class="card-custom">
+                  <div class="item-card-img-wrapper">
+                    ${imageHtml}
+                    ${typeBadge}
+                  </div>
+                  <div class="p-3 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-light text-secondary border small">${escapeHtml(item.category)}</span>
+                      ${renderStatusBadge(item.status)}
+                    </div>
+                    <h5 class="fw-bold text-dark mt-2 mb-1 text-truncate">${escapeHtml(item.title)}</h5>
+                    <p class="text-muted small mb-2 text-truncate-2">${escapeHtml(item.description)}</p>
+                    <div class="small text-secondary mb-3 mt-auto">
+                      <div><i class="fa-solid fa-location-dot text-danger me-1"></i> ${escapeHtml(item.location)}</div>
+                      <div><i class="fa-regular fa-calendar text-teal me-1"></i> ${formatDate(item.reportDate)}</div>
+                    </div>
+                    <a href="/item-details.html?id=${item._id}" class="btn btn-navy btn-sm w-100 py-2">
+                      View Details &amp; Claim &raquo;
+                    </a>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+          container.innerHTML = html;
+        } else {
+          container.innerHTML = `<div class="col-12 text-center text-muted py-4">No recent found items available.</div>`;
+        }
+      } catch (err) {
+        console.warn('Failed to load homepage items:', err);
+      }
+    });
+  </script>
+</body>
+</html>

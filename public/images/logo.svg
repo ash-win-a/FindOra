@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" width="280" height="60">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b48" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon Mark: Modern Search Beacon & Shield -->
+  <g transform="translate(10, 6)">
+    <!-- Base Shield -->
+    <path d="M24 2 L44 8 C44 26 34 38 24 44 C14 38 4 26 4 8 Z" fill="url(#shieldGrad)" />
+    <!-- Radar / Search Rings -->
+    <circle cx="24" cy="20" r="10" stroke="url(#logoGrad)" stroke-width="3" fill="none" opacity="0.9" />
+    <circle cx="24" cy="20" r="4" fill="#14b8a6" />
+    <!-- Compass Pointer / Check -->
+    <path d="M24 10 L27 19 L33 20 L27 23 L24 30 L21 23 L15 20 L21 19 Z" fill="#ffffff" opacity="0.95" />
+  </g>
+
+  <!-- Wordmark -->
+  <text x="68" y="38" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="1.5" fill="#0f2b48">FIND<tspan fill="#0d9488">ORA</tspan></text>
+  <text x="70" y="50" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="2" fill="#64748b">SMART LOST &amp; FOUND</text>
+</svg>

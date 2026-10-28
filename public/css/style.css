@@ -1,0 +1,416 @@
+/* ====================================================
+   FINDORA - Smart Lost and Found Management System
+   Custom Stylesheet (Navy Blue & Teal Modern Theme)
+   ==================================================== */
+
+:root {
+  --primary-navy: #0f2b48;
+  --primary-navy-dark: #0a1c30;
+  --primary-navy-light: #1e3a8a;
+  --teal-accent: #0d9488;
+  --teal-accent-hover: #0f766e;
+  --teal-light: #ccfbf1;
+  --teal-gradient: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  --navy-gradient: linear-gradient(135deg, #0f2b48 0%, #1e3a8a 100%);
+  --bg-light: #f8fafc;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --border-radius-sm: 8px;
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+  --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- Navbar ---------------- */
+.navbar-custom {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.navbar-brand img {
+  height: 42px;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.85rem !important;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--teal-accent);
+}
+
+.btn-teal {
+  background-color: var(--teal-accent);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 0.5rem 1.25rem;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.btn-teal:hover {
+  background-color: var(--teal-accent-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-navy {
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 0.5rem 1.25rem;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.btn-navy:hover {
+  background-color: var(--primary-navy-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-outline-navy {
+  border: 2px solid var(--primary-navy);
+  color: var(--primary-navy);
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s;
+}
+
+.btn-outline-navy:hover {
+  background-color: var(--primary-navy);
+  color: #ffffff;
+}
+
+/* ---------------- Hero Section ---------------- */
+.hero-section {
+  background: var(--navy-gradient);
+  color: #ffffff;
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, rgba(15, 43, 72, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  max-width: 600px;
+}
+
+/* ---------------- Cards ---------------- */
+.card-custom {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.item-card-img-wrapper {
+  position: relative;
+  height: 190px;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-top-left-radius: calc(var(--border-radius) - 1px);
+  border-top-right-radius: calc(var(--border-radius) - 1px);
+}
+
+.item-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-custom:hover .item-card-img {
+  transform: scale(1.04);
+}
+
+.item-card-placeholder {
+  color: #94a3b8;
+  font-size: 3rem;
+}
+
+.item-badge-type {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+}
+
+.badge-lost {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.badge-found {
+  background-color: #0d9488;
+  color: #ffffff;
+}
+
+/* ---------------- Status Badges ---------------- */
+.status-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-active {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-claimed {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.status-returned {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+
+.status-pending {
+  background-color: #ffedd5;
+  color: #c2410c;
+}
+
+.status-approved {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-rejected {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-deactivated {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+/* ---------------- Match Cards ---------------- */
+.match-card {
+  border-left: 5px solid var(--teal-accent);
+  background: #ffffff;
+  border-radius: var(--border-radius-sm);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-subtle);
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.match-card:hover {
+  background: #f8fafc;
+  transform: translateX(4px);
+}
+
+.match-score-badge {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0d9488;
+  background-color: #ccfbf1;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.match-score-strong {
+  color: #047857;
+  background-color: #d1fae5;
+}
+
+.match-score-possible {
+  color: #b45309;
+  background-color: #fef3c7;
+}
+
+.match-score-low {
+  color: #64748b;
+  background-color: #f1f5f9;
+}
+
+/* ---------------- Forms ---------------- */
+.form-label {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.35rem;
+}
+
+.form-control, .form-select {
+  border: 1px solid #cbd5e1;
+  border-radius: var(--border-radius-sm);
+  padding: 0.6rem 0.85rem;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--teal-accent);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+.input-required {
+  color: #ef4444;
+}
+
+/* ---------------- Toast Notifications ---------------- */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1090;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.custom-toast {
+  min-width: 300px;
+  max-width: 420px;
+  background: #ffffff;
+  color: var(--text-primary);
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  border-left: 4px solid var(--teal-accent);
+  padding: 0.9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.custom-toast.toast-error {
+  border-left-color: #ef4444;
+}
+
+.custom-toast.toast-success {
+  border-left-color: #10b981;
+}
+
+.custom-toast.toast-info {
+  border-left-color: #3b82f6;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+  background-color: var(--primary-navy-dark);
+  color: #94a3b8;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--teal-accent);
+}
+
+/* ---------------- Statistics Metric Boxes ---------------- */
+.stat-box {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary-navy);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
